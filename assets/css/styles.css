@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin-left:20px;
+  padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.progress-container {
+    background: #eee;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #4caf50;
+    transition: width 0.3s;
+}
+
+.task-container {
+    background: #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    align-content: center;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 8px;
+    margin-right: 25px;
+    margin-left: 0;
+    background: #f0efef;
+    border-radius: 5px;
+}
+
+li button {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+}
+
+li span {
+  flex: 1;
+}
+
+
+hr {
+    border: none;
+    height: 2px;
+    background: #dedede;
+    margin: 20px; 
+}
+
+h2{
+    padding-left: 20px;
+}
+
+.container {
+    display: flex;
+    align-items:baseline;
+    gap: 20px;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+}
+
+button:hover {
+  background: #555;
+}
+
