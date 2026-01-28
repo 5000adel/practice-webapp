@@ -1,20 +1,29 @@
 * {
-  box-sizing: border-box;
-  margin-left:20px;
-  padding: 0;
+    box-sizing: border-box;
+    /* margin-left:20px; */
+    padding: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-    max-width: 800px;
+    background: #c2c6cf;
     margin: auto;
+
+}
+
+.main-container {
+    background: #dcdcdc;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-bottom: 50px;
     padding: 20px;
+    align-items: center;
 }
 
 .progress-container {
     background: #eee;
     height: 20px;
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -26,12 +35,56 @@ body {
     transition: width 0.3s;
 }
 
+.task-manager-container {
+    background: #f8f8f8;
+    border-radius: 6px;
+    overflow: auto;
+    margin-bottom: 20px;
+    align-content: top;
+    height: 600px;
+    padding-right: 20px;
+    padding-left: 20px;
+    top: 0;
+    width: 300px;
+    min-width: 300px;
+}
+
+
+.new-task-form {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+}
+
+#new-task-input {
+    font-size: 12px;
+    padding: 10px 12px;
+    max-width: 200px;
+}
+#add-task-btn {
+    font-size: 12px;
+}
+
+
 .task-container {
     background: #f8f8f8;
-    border-radius: 10px;
-    overflow: hidden;
+    border-radius: 6px;
+    overflow: auto;
+    width: 500px;
     margin-bottom: 20px;
-    align-content: center;
+    align-content: top;
+    justify-content: center;
+    height: 600px;
+}
+
+.sticky {
+    position: sticky;
+    height: 40px;
+    top: 0;
+    z-index: 0;
+    text-align: center;
+    background: #f8f8f8;
+    border-bottom: 2px solid #dedede;
 }
 
 li {
@@ -41,27 +94,55 @@ li {
     padding: 10px;
     margin-bottom: 8px;
     margin-right: 25px;
-    margin-left: 0;
+    margin-left: 20px;
     background: #f0efef;
     border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 1;
 }
 
 li button {
-  width: 50px;
-  height: 30px;
-  text-align: center;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  background: #333;
-  color: #fff;
-  font-size: 12px;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border-radius: 6px;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+    font-size: 12px;
 }
 
 li span {
-  flex: 1;
+    flex: 1;
 }
 
+li .delete-btn {
+    display: none;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border-radius: 6px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    background: #e92424;
+}
+
+li.expanded .delete-btn{
+    display: inline-block;
+}
+
+li.removing {
+  opacity: 0;
+  transform: translateX(-20px);
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
 
 hr {
     border: none;
@@ -74,16 +155,39 @@ h2{
     padding-left: 20px;
 }
 
+.empty-message{
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+    font-style: italic;
+}
+
 .container {
     display: flex;
-    align-items:baseline;
+    align-items:center;
+    justify-content: center;
     gap: 20px;
+    flex-direction: row;
+}
+
+@media (max-width: 720px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .task-manager-container {
+        height: 200px;
+        width: 100%;
+    }
+    .task-container {
+        width: 100%;
+    }
 }
 
 button {
   padding: 6px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   background: #333;
   color: #fff;

@@ -6,32 +6,37 @@
     <title>Student Task Tracker</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
+    <div class="main-container">
+        <h1>Student Task Tracker</h1>
 
-    <h1>Student Task Tracker</h1>
-
-    <div class="progress-container">
-        <div id="progress-bar"></div>
-    </div>
-
-    
-    <div class="container">
-        <div class="task-container">
-            <h2>Uncompleted Task List</h2>
-            <hr>
-            <ul id="uncompleted-task-list"></ul>
+        <div class="progress-container">
+            <div id="progress-bar"></div>
         </div>
-
         
-        <div class="task-container">
-            <h2>Completed Task List</h2>
-            <hr>
-            <ul id="completed-task-list"></ul>
+        <div class="container">
+            <div class="task-manager-container">
+                <h2 class="sticky">Create new task</h2>
+                <div class="new-task-form">
+                    <input type="text" id="new-task-input" placeholder="Enter new task">
+                    <button id="add-task-btn">Add Task</button>
+                </div>
+            </div>
+
+            <div class="task-container">
+                <h2 class="sticky">Uncompleted Task List</h2>
+                <p id="empty-uncompleted" class="empty-message"> No pending tasks for now. Great Job!</p>
+                <ul id="uncompleted-task-list"></ul>
+            </div>
+
+            <div class="task-container">
+                <h2 class="sticky">Completed Task List</h2>
+                <p id="empty-completed" class="empty-message"> No finished tasks for now.</p>
+                <ul id="completed-task-list"></ul>
+            </div>
         </div>
     </div>
-
-
-
     <script src="assets/js/script.js"></script>
 </body>
 </html>
