@@ -1,9 +1,39 @@
 {
   "todos": [
     {
-      "id": "912d",
-      "todo": "task test 1",
-      "completed": false
+      "id": "0774",
+      "todo": "New Task",
+      "completed": true
+    },
+    {
+      "id": "2cb7",
+      "todo": "Submit M1 Summative Part 1",
+      "completed": true
+    },
+    {
+      "id": "0279",
+      "todo": "Submit M1 Summative Part 2",
+      "completed": true
+    },
+    {
+      "id": "b697",
+      "todo": "Clean room",
+      "completed": true
+    },
+    {
+      "id": "c3bf",
+      "todo": "Make my bed",
+      "completed": true
+    },
+    {
+      "id": "282a",
+      "todo": "Pay electric bills",
+      "completed": true
+    },
+    {
+      "id": "3c9f",
+      "todo": "Study for upcoming competition",
+      "completed": true
     }
   ]
 }
