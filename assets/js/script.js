@@ -11,9 +11,7 @@ const jsonInfo = document.getElementById("json-info");
 
 let todos = [];
 
-fetch("https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos/")
-
-
+fetch("http://localhost:3000/todos/")
     .then(res => res.json())
     .then(data => {
         todos = data;
@@ -51,7 +49,7 @@ function renderCompletedTasks(todos) {
             toggleBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
 
-                fetch(`https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos/${task.id}`,{
+                fetch(`http://localhost:3000/todos/${task.id}`,{
                     method: "PATCH",
                     headers: {
                         "Content-Type":"application/json"
@@ -79,7 +77,7 @@ function renderCompletedTasks(todos) {
                 e.stopPropagation();
                 console.log(`Attempting to delete task:\n"${JSON.stringify(task, null, 2)}"`);
                 
-                fetch(`https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos/${task.id}`, { 
+                fetch(`http://localhost:3000/todos/${task.id}`, { 
                     method: "DELETE" 
                 }).then(res => {
                     if (!res.ok) throw new Error("Failed to delete task");
@@ -122,7 +120,7 @@ function renderUncompletedTasks(todos) {
             toggleBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
 
-                fetch(`https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos/${task.id}`,{
+                fetch(`http://localhost:3000/todos/${task.id}`,{
                     method: "PATCH",
                     headers: {
                         "Content-Type":"application/json"
@@ -148,7 +146,7 @@ function renderUncompletedTasks(todos) {
             deleteBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
                 console.log(`Attempting to delete task:\n"${JSON.stringify(task, null, 2)}"`);
-                fetch(`https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos/${task.id}`, { 
+                fetch(`http://localhost:3000/todos/${task.id}`, { 
                     method: "DELETE" 
                 }).then(res => {
                     if (!res.ok) throw new Error("Failed to delete task");
@@ -197,7 +195,7 @@ addTaskBtn.addEventListener("click", () =>{
     const taskText = newTaskInput.value.trim();
     if(!taskText) return;
 
-    fetch("https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos", {
+    fetch("http://localhost:3000/todos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -231,12 +229,12 @@ document.addEventListener("click", (e) => {
 });
 
 function updateJsonFeed() {
-    fetch("https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos")
+    fetch("http://localhost:3000/todos")
     .then(res => res.json())
     .then(data =>{
         jsonDisplay.textContent = JSON.stringify(data,null,2);
-        jsonInfo.textContent =  "Fetching JSON data from https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos ";
-        jsonInfoBlink("Fetching JSON data from https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos ");
+        jsonInfo.textContent =  "Fetching JSON data from http://localhost:3000/todos ";
+        jsonInfoBlink("Fetching JSON data from http://localhost:3000/todos ");
     })
     .catch(err => {
         jsonDisplay.textContent = "Error loading JSON:\n" + err;
@@ -245,7 +243,7 @@ function updateJsonFeed() {
 }
 
 function fetchTodosAndRender(){
-    fetch("https://api.jsonbin.io/v3/b/697b378343b1c97be9547c84/record/todos")
+    fetch("http://localhost:3000/todos")
     .then(res => res.json())
     .then(data => {
         todos=data;
