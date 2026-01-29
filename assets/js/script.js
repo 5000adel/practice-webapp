@@ -8,8 +8,8 @@ const helpPopup = document.getElementById("help-popup");
 const jsonFeed = document.getElementById("jsonFeed");
 const jsonDisplay = document.getElementById("json-display");
 const jsonInfo = document.getElementById("json-info");
-// const fetchStr = "https://practice-webapp-production.up.railway.app/todos";
-const fetchStr = "http://localhost:3000/todos";
+const fetchStr = "https://test-json-9bka-r6j5dyfgo-adels-projects-8bdc1ba9.vercel.app/todos";
+//const fetchStr = "http://localhost:3000/todos";
 let todos = [];
 
 fetch(fetchStr)
