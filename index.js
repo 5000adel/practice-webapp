@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
@@ -11,19 +12,16 @@ let todos = [
     { id: "0279", todo: "Submit M1 Summative Part 2", completed: true }
 ];
 
-// GET
+// Endpoints
 app.get("/todos", (req, res) => {
     res.json(todos);
 });
-
-// POST
 app.post("/todos", (req, res) => {
     const newTodo = { id: Date.now().toString(), ...req.body };
     todos.push(newTodo);
     res.json(newTodo);
 });
 
-// PATCH
 app.patch("/todos/:id", (req, res) => {
     const { id } = req.params;
     const todo = todos.find(t => t.id === id);
@@ -31,14 +29,10 @@ app.patch("/todos/:id", (req, res) => {
     Object.assign(todo, req.body);
     res.json(todo);
 });
-
-// DELETE 
 app.delete("/todos/:id", (req, res) => {
     const { id } = req.params;
     todos = todos.filter(t => t.id !== id);
     res.json({ success: true });
 });
 
-app.listen(3000, () => {
-    console.log("Backend running at http://localhost:3000");
-});
+app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
