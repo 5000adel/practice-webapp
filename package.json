@@ -10,7 +10,7 @@
   "version": "1.0.0",
   "description": "web app creation practice for examination",
   "main": "index.js",
-  "scripts": {
+"scripts": {
     "start": "node index.js"
   },
   "repository": {

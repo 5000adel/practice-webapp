@@ -8,10 +8,11 @@ const helpPopup = document.getElementById("help-popup");
 const jsonFeed = document.getElementById("jsonFeed");
 const jsonDisplay = document.getElementById("json-display");
 const jsonInfo = document.getElementById("json-info");
-
+// const fetchStr = "https://practice-webapp-production.up.railway.app/todos";
+const fetchStr = "http://localhost:3000/todos";
 let todos = [];
 
-fetch("http://localhost:3000/todos/")
+fetch(fetchStr)
     .then(res => res.json())
     .then(data => {
         todos = data;
@@ -49,7 +50,7 @@ function renderCompletedTasks(todos) {
             toggleBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
 
-                fetch(`http://localhost:3000/todos/${task.id}`,{
+                fetch(fetchStr+`/${task.id}`,{
                     method: "PATCH",
                     headers: {
                         "Content-Type":"application/json"
@@ -77,7 +78,7 @@ function renderCompletedTasks(todos) {
                 e.stopPropagation();
                 console.log(`Attempting to delete task:\n"${JSON.stringify(task, null, 2)}"`);
                 
-                fetch(`http://localhost:3000/todos/${task.id}`, { 
+                fetch(fetchStr+`/${task.id}`, { 
                     method: "DELETE" 
                 }).then(res => {
                     if (!res.ok) throw new Error("Failed to delete task");
@@ -120,7 +121,7 @@ function renderUncompletedTasks(todos) {
             toggleBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
 
-                fetch(`http://localhost:3000/todos/${task.id}`,{
+                fetch(fetchStr+`/${task.id}`,{
                     method: "PATCH",
                     headers: {
                         "Content-Type":"application/json"
@@ -146,7 +147,7 @@ function renderUncompletedTasks(todos) {
             deleteBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
                 console.log(`Attempting to delete task:\n"${JSON.stringify(task, null, 2)}"`);
-                fetch(`http://localhost:3000/todos/${task.id}`, { 
+                fetch(fetchStr+`/${task.id}`, { 
                     method: "DELETE" 
                 }).then(res => {
                     if (!res.ok) throw new Error("Failed to delete task");
@@ -195,7 +196,7 @@ addTaskBtn.addEventListener("click", () =>{
     const taskText = newTaskInput.value.trim();
     if(!taskText) return;
 
-    fetch("http://localhost:3000/todos", {
+    fetch(fetchStr, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -229,21 +230,21 @@ document.addEventListener("click", (e) => {
 });
 
 function updateJsonFeed() {
-    fetch("http://localhost:3000/todos")
+    fetch(fetchStr)
     .then(res => res.json())
     .then(data =>{
         jsonDisplay.textContent = JSON.stringify(data,null,2);
-        jsonInfo.textContent =  "Fetching JSON data from http://localhost:3000/todos ";
-        jsonInfoBlink("Fetching JSON data from http://localhost:3000/todos ");
+        jsonInfo.textContent =  `Fetching JSON data from ${fetchStr}`;
+        jsonInfoBlink(`Fetching JSON data from ${fetchStr} `);
     })
     .catch(err => {
         jsonDisplay.textContent = "Error loading JSON:\n" + err;
-        jsonInfo.textContent = "Error loading JSON server"  
+        jsonInfo.textContent = `Error loading JSON from ${fetchStr}`  
     });
 }
 
 function fetchTodosAndRender(){
-    fetch("http://localhost:3000/todos")
+    fetch(URL)
     .then(res => res.json())
     .then(data => {
         todos=data;
